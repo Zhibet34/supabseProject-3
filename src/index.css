@@ -1,3 +1,47 @@
 body{
     background-color: darkgrey;
 }
+
+h1 {
+    margin-top: 1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.textarea-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.textarea-container label {
+    margin-bottom: 0.5em;
+    text-transform: capitalize;
+    font-size: 1.7em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+textarea {
+    resize: none;
+    border-radius: 8px;
+    padding: 1em;
+}
+
+.post-btn {
+    width: 50%;
+    text-align: center;
+    margin: 1em auto;
+    height: 30px;
+}
+
+.post-btn button {
+    height: 100%;
+    background-color: rgb(26, 132, 237);
+    width: 30%;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    text-transform: capitalize;
+}

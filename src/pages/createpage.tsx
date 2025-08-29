@@ -1,8 +1,9 @@
+import Quote from "../component/quotePost"
 
 function Createpost(){
     return(
         <div>
-            <h2>create page</h2>
+            <Quote/>
         </div>
     )
 }

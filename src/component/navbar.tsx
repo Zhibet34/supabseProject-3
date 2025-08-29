@@ -52,6 +52,9 @@ function Navbar() {
         >
           Create Post
         </NavLink>
+        <div>
+          {/** add a logout icon with functionaly later */}
+        </div>
       </div>
     </nav>
   );

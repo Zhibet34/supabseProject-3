@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 
 interface loginInterface {
@@ -12,6 +13,8 @@ function LoginForm(){
         password: ''
     });
 
+    const homeRedirect = useNavigate()
+
     const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target
         setLoginData((prev)=>({
@@ -22,21 +25,17 @@ function LoginForm(){
 
     const handleSubmit = async (e:FormEvent)=>{
         e.preventDefault();
-        console.log(loginData)
         try {
-            const {data} = await supabase.auth.signInWithPassword({
+            const {error: loginError} = await supabase.auth.signInWithPassword({
                 email: loginData.email,
                 password: loginData.password
             });
 
-            if(data.session?.access_token){
-                setLoginData({
-                    email: '',
-                    password: ''
-                })
-                console.log(data)
+            if (loginError){
+                console.log(loginError)
+                return
             }
-
+            homeRedirect('/')
         } catch (error) {
             console.log(error)
         }
@@ -63,13 +62,13 @@ function LoginForm(){
                 <label htmlFor="password">
                     password
                 </label>
-                <input 
+                 <input 
                     type="password"
                     id="password"
+                    name="password"  // Move this up
                     value={loginData.password}
                     onChange={handleChange}
-                    name="password" 
-                    />
+                />
             </div>
 
             <div>
